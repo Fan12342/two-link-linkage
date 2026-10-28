@@ -41,7 +41,7 @@ private:
     bool is_first_ = true;
 
     // 记录当前状态
-    uint32_t now_index_ = 3000;
+    uint32_t now_index_ = 0;
     float now_tick_ = 0.0f;
     PointData now_point_ = PointData();
     TrajectoryData now_trajectory_ = TrajectoryData();
