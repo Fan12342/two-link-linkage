@@ -40,6 +40,7 @@ add_executable(${CMAKE_PROJECT_NAME}
         Core/Usercode/TrajectorySquare.cpp
         Core/Usercode/two_link_linkage.cpp
         Core/Usercode/callback.cpp
+        Core/Usercode/curve.cpp
 )
 
 # Add STM32CubeMX generated sources

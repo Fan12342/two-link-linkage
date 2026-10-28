@@ -4,6 +4,8 @@
 
 #ifndef IMA_TRAJECTORY_H
 #define IMA_TRAJECTORY_H
+
+#include "curve.h"
 #include <cstdint>
 
 class TrajectoryFitter
@@ -33,6 +35,9 @@ class TrajectoryFitter
     float get_angle_out() const;
 
 private:
+    // 缓动曲线
+    CurveType curve_type_ = CurveType::SmoothStep;
+
     // 已知数据保存
     uint32_t samples_; // 拟合点数
     float len_center_;

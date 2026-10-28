@@ -30,7 +30,17 @@ float TrajectoryFitter::get_angle_out() const
 
 void TrajectoryFitter::index_to_tick()
 {
-    now_tick_ = static_cast<float>(now_index_);
+    // 转至 [0, 4)，便于求边
+    float segment = static_cast<float>(now_index_) / static_cast<float>(samples_) * 4.0f;
+
+    // 确定当前所在的边
+    int side = static_cast<int>(segment);
+
+    // 计算在当前边的位置，应用速度曲线
+    float eased = apply_curve(segment - static_cast<float>(side), curve_type_);
+
+    // 转换为 tick
+    now_tick_ = static_cast<float>(samples_) * (static_cast<float>(side) + eased) / 4.0f;
 }
 
 void TrajectoryFitter::point_to_trajectory()
